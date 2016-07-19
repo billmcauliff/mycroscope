@@ -10,5 +10,16 @@ Template.postItem.helpers({
   },
   commentsCount: function() {
     return Comments.find({postId: this._id}).count();
-  }
-});
+  },
+  commentsSingularOrPlural: function(commentsCount){
+      var comment = {};
+          if (Comments.find({postId: this._id}).count() === 1){
+            comment = "comment";
+          } else {
+            comment = "comments";
+          }
+          
+        return comment;
+      }
+    }
+);
